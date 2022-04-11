@@ -23,7 +23,7 @@ import * as States from "./States";
 // Reducers are transition functions for the finite automata
 type Reducer = (a: Action, s: State) => State;
 
-export const reducer: Reducer = (action, currentState) => {
+export const fsmReducer: Reducer = (action, currentState) => {
   switch (currentState.type) {
     // First, filter by state. So you cannot send actions to an invalid state.
     // But note that this is a pure function. So currentState is extenal.
@@ -51,10 +51,10 @@ export const reduceSearch: Reducer = (action, state) => {
   switch (action.type) {
     case "ClickMap":
       // The action carries info about the map
-      return <MapScreen>{ mapId: action.mapId };
+      return { ...state, type: "MapScreen", mapId: action.mapId };
     case "ClickPkm":
       // The action carries info about the pokemon
-      return <PkmInfoScreen>{ pkmId: action.pkmId };
+      return { ...state, type: "PkmInfoScreen", pkmId: action.pkmId };
     default:
       return state;
   }

@@ -17,7 +17,7 @@ import {
   ClickSection,
 } from "./Actions";
 
-import { reducer } from "./Reducers";
+import { fsmReducer } from "./Reducers";
 
 // Still haven't written the tests. But the Tests will "codify" the FSM diagram
 // of the app. So I can implement it on the Reducers.ts file.
