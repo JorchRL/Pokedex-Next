@@ -21,7 +21,7 @@ import {
 import * as States from "./States";
 
 // Reducers are transition functions for the finite automata
-type Reducer = (a: Action, s: State) => State;
+export type Reducer = (a: Action, s: State) => State;
 
 export const fsmReducer: Reducer = (action, currentState) => {
   switch (currentState.type) {
