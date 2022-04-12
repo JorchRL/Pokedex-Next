@@ -181,7 +181,7 @@ describe("PkmInfoScreen State Transitions", () => {
       type: "ClickSearch",
     };
 
-    expect(fsmReducer(action, initialState)).toEqual(initialState);
+    expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
   it("action 'ClickMap' should transition to MapScreen with mapId ", () => {
     const expectedState: MapScreen = {
@@ -196,7 +196,7 @@ describe("PkmInfoScreen State Transitions", () => {
       mapId: 1,
     };
 
-    expect(fsmReducer(action, initialState)).toEqual(initialState);
+    expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
   it("action 'ClickSection' should transition to MapSectionScreen with mapId and sectionId", () => {
     const expectedState: MapSectionScreen = {
@@ -210,7 +210,7 @@ describe("PkmInfoScreen State Transitions", () => {
       sectionId: 1,
       mapId: 1,
     };
-    expect(fsmReducer(action, initialState)).toEqual(initialState);
+    expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
   it("should do nothing when given an invalid action", () => {
     const invalidAction = {
@@ -227,7 +227,7 @@ describe("PkmInfoScreen State Transitions", () => {
 describe("PkmInfoToSearch State Transitions", () => {
   const initialState: PkmInfoToSearch = {
     type: "PkmInfoToSearch",
-    pkmId: 1,
+    pkmId: 10,
     mapId: null,
     sectionId: null,
   };
@@ -242,12 +242,12 @@ describe("PkmInfoToSearch State Transitions", () => {
       type: "InputSearch",
     };
 
-    expect(fsmReducer(action, initialState)).toEqual(initialState);
+    expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
   it("action 'ClickPkm' should transitio to PkmInfoScreen with pkmId", () => {
     const expectedState: PkmInfoScreen = {
-      type: "Search",
-      pkmId: null,
+      type: "PkmInfoScreen",
+      pkmId: 1,
       mapId: null,
       sectionId: null,
     };
@@ -256,11 +256,11 @@ describe("PkmInfoToSearch State Transitions", () => {
       type: "ClickPkm",
       pkmId: 1,
     };
-    expect(fsmReducer(action, initialState)).toEqual(initialState);
+    expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
   it("action 'ClickMap' should transition to MapScreen with mapId", () => {
     const expectedState: MapScreen = {
-      type: "Search",
+      type: "MapScreen",
       pkmId: null,
       mapId: 1,
       sectionId: null,
@@ -270,7 +270,7 @@ describe("PkmInfoToSearch State Transitions", () => {
       mapId: 1,
     };
 
-    expect(fsmReducer(action, initialState)).toEqual(initialState);
+    expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
   it("action 'ClickSection' should transition to MapSectionScreen with mapId and sectionId", () => {
     const expectedState: MapSectionScreen = {
@@ -285,7 +285,7 @@ describe("PkmInfoToSearch State Transitions", () => {
       sectionId: 1,
     };
 
-    expect(fsmReducer(action, initialState)).toEqual(initialState);
+    expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
   it("should do nothing when given an invalid action", () => {
     const invalidAction = {
@@ -319,7 +319,7 @@ describe("MapSectionScreen State Transitions", () => {
       mapId: 2,
       sectionId: 2,
     };
-    expect(fsmReducer(action, initialState)).toEqual(initialState);
+    expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
   it("action 'ClickPkm' should transition to PkmInfoScreen with pkmId", () => {
     const expectedState: PkmInfoScreen = {
@@ -333,7 +333,7 @@ describe("MapSectionScreen State Transitions", () => {
       pkmId: 1,
     };
 
-    expect(fsmReducer(action, initialState)).toEqual(initialState);
+    expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
   it("action 'ClickSearch' should transition to MapToSearch", () => {
     const expectedState: MapToSearch = {
@@ -346,7 +346,7 @@ describe("MapSectionScreen State Transitions", () => {
       type: "ClickSearch",
     };
 
-    expect(fsmReducer(action, initialState)).toEqual(initialState);
+    expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
 
   it("should do nothing when given an invalid action", () => {
