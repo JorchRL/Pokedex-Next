@@ -40,7 +40,7 @@ export const fsmReducer: Reducer = (action, currentState) => {
     case "MapSectionScreen":
       return reduceMapSectionScreen(action, currentState);
     default:
-      return currentState;
+      throw new TypeError("You cannot pass an invalid state!");
   }
 };
 
