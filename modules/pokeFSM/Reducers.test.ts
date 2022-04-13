@@ -51,14 +51,14 @@ describe("Search State Transitions", () => {
     const expectedState: MapScreen = {
       type: "MapScreen",
       pkmId: null,
-      mapId: 1,
+      mapId: 3,
       sectionId: null,
     };
     const action: ClickMap = {
       type: "ClickMap",
-      mapId: 1,
+      mapId: 3,
     };
-    expect(fsmReducer(action, initialState)).toEqual(initialState);
+    expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
   it("should do nothing when given an invalid action", () => {
     const invalidAction = {
@@ -96,14 +96,14 @@ describe("MapScreen State Transitions", () => {
     // The reducer must preserve mapId (?)
     const expectedState: MapSectionScreen = {
       type: "MapSectionScreen",
-      mapId: 1,
-      sectionId: 1,
+      mapId: 5,
+      sectionId: 5,
       pkmId: null,
     };
     const action: ClickSection = {
       type: "ClickSection",
-      sectionId: 1,
-      mapId: 1,
+      sectionId: 5,
+      mapId: 5,
     };
     expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
@@ -141,13 +141,13 @@ describe("MapToSearch State Transitions", () => {
   it("action 'ClickMap' should transition to MapScreen with mapId", () => {
     const expectedState: MapScreen = {
       type: "MapScreen",
-      mapId: 1,
+      mapId: 5,
       pkmId: null,
       sectionId: null,
     };
     const action: ClickMap = {
       type: "ClickMap",
-      mapId: 1,
+      mapId: 5,
     };
     expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
@@ -173,7 +173,7 @@ describe("PkmInfoScreen State Transitions", () => {
   it("action 'ClickSearch' should transition to PkmInfoToSearch", () => {
     const expectedState: PkmInfoToSearch = {
       type: "PkmInfoToSearch",
-      pkmId: null,
+      pkmId: 1, // should keep the reference
       mapId: null,
       sectionId: null,
     };
@@ -187,13 +187,13 @@ describe("PkmInfoScreen State Transitions", () => {
     const expectedState: MapScreen = {
       type: "MapScreen",
       pkmId: null,
-      mapId: 1,
+      mapId: 5,
       sectionId: null,
     };
 
     const action: ClickMap = {
       type: "ClickMap",
-      mapId: 1,
+      mapId: 5,
     };
 
     expect(fsmReducer(action, initialState)).toEqual(expectedState);
@@ -201,14 +201,14 @@ describe("PkmInfoScreen State Transitions", () => {
   it("action 'ClickSection' should transition to MapSectionScreen with mapId and sectionId", () => {
     const expectedState: MapSectionScreen = {
       type: "MapSectionScreen",
-      pkmId: null,
-      mapId: 1,
-      sectionId: 1,
+      pkmId: null, // should reset this
+      mapId: 5,
+      sectionId: 5,
     };
     const action: ClickSection = {
       type: "ClickSection",
-      sectionId: 1,
-      mapId: 1,
+      sectionId: 5,
+      mapId: 5,
     };
     expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
@@ -227,7 +227,7 @@ describe("PkmInfoScreen State Transitions", () => {
 describe("PkmInfoToSearch State Transitions", () => {
   const initialState: PkmInfoToSearch = {
     type: "PkmInfoToSearch",
-    pkmId: 10,
+    pkmId: null,
     mapId: null,
     sectionId: null,
   };
@@ -247,14 +247,14 @@ describe("PkmInfoToSearch State Transitions", () => {
   it("action 'ClickPkm' should transitio to PkmInfoScreen with pkmId", () => {
     const expectedState: PkmInfoScreen = {
       type: "PkmInfoScreen",
-      pkmId: 1,
+      pkmId: 3,
       mapId: null,
       sectionId: null,
     };
 
     const action: ClickPkm = {
       type: "ClickPkm",
-      pkmId: 1,
+      pkmId: 3,
     };
     expect(fsmReducer(action, initialState)).toEqual(expectedState);
   });
@@ -262,12 +262,12 @@ describe("PkmInfoToSearch State Transitions", () => {
     const expectedState: MapScreen = {
       type: "MapScreen",
       pkmId: null,
-      mapId: 1,
+      mapId: 3,
       sectionId: null,
     };
     const action: ClickMap = {
       type: "ClickMap",
-      mapId: 1,
+      mapId: 3,
     };
 
     expect(fsmReducer(action, initialState)).toEqual(expectedState);

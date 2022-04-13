@@ -36,7 +36,7 @@ export const fsmReducer: Reducer = (action, currentState) => {
     case "PkmInfoScreen":
       return reducePkmInfoScreen(action, currentState);
     case "PkmInfoToSearch":
-      return reducePkmInfoScreen(action, currentState);
+      return reducePkmInfoToSearch(action, currentState);
     case "MapSectionScreen":
       return reduceMapSectionScreen(action, currentState);
     default:
@@ -62,9 +62,15 @@ export const reduceSearch: Reducer = (action, state) => {
 export const reduceMapToSearch: Reducer = (action, state) => {
   switch (action.type) {
     case "InputSearch":
-      return <Search>{};
+      return {
+        ...state,
+        type: "Search",
+        mapId: null,
+        pkmId: null,
+        sectionId: null,
+      };
     case "ClickMap":
-      return <MapScreen>{};
+      return { ...state, type: "MapScreen", mapId: action.mapId };
     default:
       return state;
   }
@@ -72,19 +78,32 @@ export const reduceMapToSearch: Reducer = (action, state) => {
 export const reduceMapScreen: Reducer = (action, state) => {
   switch (action.type) {
     case "ClickSection":
-      return <MapSectionScreen>{
+      return {
+        ...state,
+        type: "MapSectionScreen",
         mapId: action.mapId,
         sectionId: action.sectionId,
       };
     case "ClickSearch":
-      return <Search>{};
+      return { ...state, type: "MapToSearch" };
     default:
       return state;
   }
 };
 export const reducePkmInfoScreen: Reducer = (action, state) => {
   switch (action.type) {
+    case "ClickMap":
+      return { ...state, type: "MapScreen", mapId: action.mapId, pkmId: null };
+    case "ClickSection":
+      return {
+        ...state,
+        type: "MapSectionScreen",
+        mapId: action.mapId,
+        sectionId: action.sectionId,
+        pkmId: null,
+      };
     case "ClickSearch":
+      return { ...state, type: "PkmInfoToSearch" };
     default:
       return state;
   }
@@ -92,19 +111,53 @@ export const reducePkmInfoScreen: Reducer = (action, state) => {
 export const reducePkmInfoToSearch: Reducer = (action, state) => {
   switch (action.type) {
     case "InputSearch":
-      return <Search>{};
+      return {
+        ...state,
+        type: "Search",
+        pkmId: null,
+        mapId: null,
+        sectionId: null,
+      };
     case "ClickPkm":
-      return <PkmInfoScreen>{ pkmId: action.pkmId };
+      return {
+        ...state,
+        type: "PkmInfoScreen",
+        pkmId: action.pkmId,
+        mapId: null,
+        sectionId: null,
+      };
+    case "ClickMap":
+      return { ...state, type: "MapScreen", mapId: action.mapId };
+    case "ClickSection":
+      return {
+        ...state,
+        type: "MapSectionScreen",
+        sectionId: action.sectionId,
+        mapId: action.sectionId,
+      };
     default:
       return state;
   }
 };
 export const reduceMapSectionScreen: Reducer = (action, state) => {
   switch (action.type) {
+    case "ClickSection":
+      return {
+        ...state,
+        type: "MapSectionScreen",
+        mapId: action.mapId,
+        sectionId: action.sectionId,
+      };
     case "ClickPkm":
-      return <PkmInfoScreen>{ pkmId: action.pkmId };
+      return {
+        ...state,
+        type: "PkmInfoScreen",
+        pkmId: action.pkmId,
+        mapId: null,
+        sectionId: null,
+      };
     case "ClickSearch":
-      return <MapToSearch>{};
+      return { ...state, type: "MapToSearch" };
     default:
       return state;
   }
