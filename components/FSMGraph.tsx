@@ -13,15 +13,28 @@ const FSMGraph = () => {
       { id: 6, label: "6 MapSectionScreen", title: "" },
     ],
     edges: [
-      { from: 1, to: 4 },
-      { from: 1, to: 3 },
-      { from: 2, to: 1 },
-      { from: 3, to: 2 },
-      { from: 3, to: 6 },
-      { from: 4, to: 5 },
-      { from: 5, to: 1 },
-      { from: 6, to: 4 },
-      { from: 6, to: 2 },
+      // Search
+      { from: 1, to: 4 }, // To MapScreen
+      { from: 1, to: 3 }, // To PkmInfoScreen
+      // MapToSearch
+      { from: 2, to: 1 }, // To Search
+      { from: 2, to: 3 }, // To MapScreen
+      // MapScreen
+      { from: 3, to: 2 }, // To MapToSearch
+      { from: 3, to: 6 }, // To MapSectionScreen
+      // PkmInfoScreen
+      { from: 4, to: 5 }, // To PkmInfoToSearch
+      { from: 4, to: 6 }, // To MapSectionScreen
+      { from: 4, to: 3 }, // To MapScreen
+      // PkmInfoToSearch
+      { from: 5, to: 1 }, // To Search
+      { from: 5, to: 4 }, // PkmInfoScreen
+      { from: 5, to: 3 }, // MapScreen
+      { from: 5, to: 6 }, // MapSectionScreen
+      // MapSectionScreen
+      { from: 6, to: 4 }, //To PkmInfoScreen
+      { from: 6, to: 2 }, // To MapToSearch
+      { from: 6, to: 6 }, // To MapSectionScreen
     ],
   };
 
