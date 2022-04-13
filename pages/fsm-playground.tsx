@@ -56,8 +56,8 @@ const FsmPlayground = ({ state, dispatch }: playgroudProps) => {
   const createAction = (
     type: ActionTypes,
     pkmId: number = 1,
-    mapId = 1,
-    sectionId = 1
+    mapId: number = 1,
+    sectionId: number = 1
   ) => {
     return { type: type, pkmId, mapId, sectionId };
   };
