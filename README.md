@@ -5,9 +5,11 @@ By Jorge Romero :3
 
 ## How I worked on this
 
-I wanted to learn how to design an app as well as how to build it. I decided on a pokedex because it is something I use when playing pokemon games. I am writing a series of posts in my blog about every stage of this project.
+I wanted to learn how to *design* an app as well as how to build it. I decided on a pokedex because it is something I use when playing pokemon games. I am writing a series of posts in my blog about every stage of this project.
 
-Design: https://jorgerl.hashnode.dev/how-to-think-and-learn-about-design-also-im-designing-and-building-a-pokedex
+Design: [How to think and learn about design. Also, I'm designing and building a Pokédex!](https://jorgerl.hashnode.dev/how-to-think-and-learn-about-design-also-im-designing-and-building-a-pokedex)
+
+The FSM to drive the UI: [Thinking with types: building a Finite State Machine with TypeScript to drive an app's UI](https://jorgerl.hashnode.dev/thinking-with-types-building-a-finite-state-machine-with-typescript-to-drive-an-apps-ui)
 
 ## Why I built it this way?
 
