@@ -20,7 +20,7 @@ These guided my decision-making when building the app.
 ### Interaction loop
 (1) I decided to use a custom-built FSM to drive the interaction flow of the entire app. This is because I want to have some assurances that the flow will not behave in unexpected manners. I implemented discriminated union types in TypeScript for this. It is strongly typed and purely functional. So the state must be managed with other solution.
 
-(2) For wiring up the FSM to the app I choose to try [Zustand](https://github.com/pmndrs/zustand) and react's ContextAPI. And see which one works best for my app (WIP). Redux was not a good match for this because this is a very simple state and I also want to be able to have manually-set constraints over the FSM behaviour.
+(2) For wiring up the FSM to the app I choose to try [Zustand](https://github.com/pmndrs/zustand). Redux was not a good match for this because this is a very simple state and I also want to be able to have manually-set constraints over the FSM behaviour. Also, Zustand is extremely elegant and easy to use!
 
 ### Interface flow (WIP)
 (1) I want a very simple single page application. So I decided to use a 3-component page. There is a "Search bar", "Pokemon Info" and "Map" component. Each will behave and look according to the "paper page" material metaphor from google's material design.
@@ -43,7 +43,7 @@ These guided my decision-making when building the app.
 
 (2) I built a functional FSM with "reducer" functions to act as the FSM's transition function. 
 
-(3) I learned a lot about how state management with Next.js (and react in general). Without Redux.
+(3) I learned a lot about how state management works in react and with Next.js. Without defaulting to Redux.
 
 ## If I had more time...
 
